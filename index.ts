@@ -36,7 +36,7 @@ async function isUserPermittedByTeam(actor: string): Promise<boolean> {
         } catch (e) {
             core.error(`error occurred when fetch team ${github.context.repo.owner}/${team}`);
             core.error(e);
-            return false
+            return false;
         }
     }
     return false;
@@ -49,7 +49,7 @@ async function main() {
         return;
     }
     core.info("not permitted by users");
-    if (isUserPermittedByTeam(actor)) {
+    if (await isUserPermittedByTeam(actor)) {
         core.info("permitted by teams");
         return
     }

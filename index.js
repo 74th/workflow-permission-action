@@ -63,7 +63,7 @@ async function main() {
         return;
     }
     core.info("not permitted by users");
-    if (isUserPermittedByTeam(actor)) {
+    if (await isUserPermittedByTeam(actor)) {
         core.info("permitted by teams");
         return;
     }
