@@ -1,0 +1,14 @@
+name: "workflow permission"
+description: "block workflow without permitted users"
+inputs:
+  users:
+    description: "permitted user names separated by ,"
+    required: false
+    default: ""
+  groups:
+    description: "permitted group names separated by ,"
+    required: false
+    default: ""
+runs:
+  using: "node12"
+  main: "index.js"
