@@ -30,8 +30,6 @@ function isUserPermittedByUserName(actor) {
     const users = input.split(",");
     return users.findIndex(user => user === actor) > -1;
 }
-const MAX_PAGE = 100;
-const PER_PAGE = 100;
 async function isUserPermittedByTeam(actor) {
     const input = core.getInput("teams");
     if (!input) {
@@ -39,17 +37,11 @@ async function isUserPermittedByTeam(actor) {
     }
     const teams = input.split(",");
     const octokit = new action_1.Octokit();
-    for (const team in teams) {
-        for (let page = 0; page < MAX_PAGE; page++) {
-            const res = await octokit.teams.listMembersInOrg({
-                org: github.context.repo.owner,
-                team_slug: team,
-                per_page: PER_PAGE,
-                page: page,
-            });
-            if (res.data.length == 0) {
-                break;
-            }
+    for (const team of teams) {
+        for await (const res of octokit.paginate.iterator(octokit.teams.listMembersInOrg, {
+            org: github.context.repo.owner,
+            team_slug: team,
+        })) {
             if (res.data.findIndex((user) => { return user.login == actor; }) > -1) {
                 return true;
             }
