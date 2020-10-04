@@ -9,6 +9,10 @@ inputs:
     description: "permitted user names separated by line feed"
     required: false
     default: ""
+author: Atsushi Morimoto @74th
+branding:
+  color: yellow
+  icon: alert-triangle
 runs:
   using: "node12"
   main: "index.js"
