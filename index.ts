@@ -45,11 +45,15 @@ async function isUserPermittedByTeam(actor: string): Promise<boolean> {
 async function main() {
     const actor = github.context.actor;
     if (isUserPermittedByUserName(actor)) {
+        core.info("permitted by users");
         return;
     }
+    core.info("not permitted by users");
     if (isUserPermittedByTeam(actor)) {
+        core.info("permitted by teams");
         return
     }
+    core.info("not permitted by teams");
     core.setFailed(`${actor} is not permitted this workflow`)
 }
 
