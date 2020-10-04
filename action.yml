@@ -5,8 +5,8 @@ inputs:
     description: "permitted user names separated by ,"
     required: false
     default: ""
-  groups:
-    description: "permitted group names separated by ,"
+  teams:
+    description: "permitted team names separated by ,"
     required: false
     default: ""
 runs:
