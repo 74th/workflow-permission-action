@@ -30,6 +30,9 @@ async function isUserPermittedByTeam(actor: string): Promise<boolean> {
                 per_page: PER_PAGE,
                 page: page,
             })
+            if (res.data.length == 0) {
+                break;
+            }
             if (res.data.findIndex((user) => { return user.login == actor; }) > -1) {
                 return true;
             }
@@ -39,15 +42,20 @@ async function isUserPermittedByTeam(actor: string): Promise<boolean> {
 }
 
 async function main() {
-    const actor = github.context.actor;
-    if (isUserPermittedByUserName(actor)) {
+    try {
+        const actor = github.context.actor;
+        if (isUserPermittedByUserName(actor)) {
+            return;
+        }
+        if (isUserPermittedByTeam(actor)) {
+            return
+        }
+        core.setFailed(`${actor} is not permitted this workflow`)
         return;
+    } catch (e) {
+        core.error(e);
+        core.setFailed("uncaught error occurred");
     }
-    if (isUserPermittedByTeam(actor)) {
-        return
-    }
-    core.setFailed(`${actor} is not permitted this workflow`)
-    return;
 }
 
 main();
