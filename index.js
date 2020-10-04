@@ -38,13 +38,19 @@ async function isUserPermittedByTeam(actor) {
     const teams = input.split(",");
     const octokit = new action_1.Octokit();
     for (const team of teams) {
-        for await (const res of octokit.paginate.iterator(octokit.teams.listMembersInOrg, {
-            org: github.context.repo.owner,
-            team_slug: team,
-        })) {
-            if (res.data.findIndex((user) => { return user.login == actor; }) > -1) {
-                return true;
+        try {
+            for await (const res of octokit.paginate.iterator(octokit.teams.listMembersInOrg, {
+                org: github.context.repo.owner,
+                team_slug: team,
+            })) {
+                if (res.data.findIndex((user) => { return user.login == actor; }) > -1) {
+                    return true;
+                }
             }
+        }
+        catch (e) {
+            core.error(`error occurred when fetch team ${github.context.repo.owner}/${team}`);
+            core.error(e);
         }
     }
     return false;
