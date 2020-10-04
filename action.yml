@@ -5,8 +5,8 @@ inputs:
     description: "permitted user names separated by ,"
     required: false
     default: ""
-  teams:
-    description: "permitted team names separated by ,"
+  listfile:
+    description: "permitted user names separated by line feed"
     required: false
     default: ""
 runs:
