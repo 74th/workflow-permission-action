@@ -24,25 +24,6 @@
   dependencies:
     tunnel "0.0.6"
 
-"@octokit/action@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@octokit/action/-/action-3.1.1.tgz#46b823283f528569025af55cbc912f2e1f2f15da"
-  integrity sha512-mTqBX6OMvZaMG8NRHRaDXdPyUTwQA9WieS1r3b+x6ajL2XkxjUM9bdTJbxc0F1APftuRj1zzP40PTd7xdCwZKg==
-  dependencies:
-    "@octokit/auth-action" "^1.2.0"
-    "@octokit/core" "^3.0.0"
-    "@octokit/plugin-paginate-rest" "^2.2.4"
-    "@octokit/plugin-rest-endpoint-methods" "4.2.0"
-    "@octokit/types" "^5.0.0"
-
-"@octokit/auth-action@^1.2.0":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@octokit/auth-action/-/auth-action-1.2.2.tgz#8aa64987cccb5db04b3fa0fcd314bb564b3c1f32"
-  integrity sha512-G3xcXQI+TRlvkcCe3uN7heklS0sDbHosbStkcoCBzuOQxDSuOB5nGIjJcWCnp4YO7/L9hKDwsC6ct/6eR9GcnQ==
-  dependencies:
-    "@octokit/auth-token" "^2.4.0"
-    "@octokit/types" "^5.0.0"
-
 "@octokit/auth-token@^2.4.0":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@octokit/auth-token/-/auth-token-2.4.2.tgz#10d0ae979b100fa6b72fa0e8e63e27e6d0dbff8a"
@@ -80,7 +61,7 @@
     "@octokit/types" "^5.0.0"
     universal-user-agent "^6.0.0"
 
-"@octokit/plugin-paginate-rest@^2.2.0", "@octokit/plugin-paginate-rest@^2.2.3", "@octokit/plugin-paginate-rest@^2.2.4":
+"@octokit/plugin-paginate-rest@^2.2.0", "@octokit/plugin-paginate-rest@^2.2.3":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@octokit/plugin-paginate-rest/-/plugin-paginate-rest-2.4.0.tgz#92f951ddc8a1cd505353fa07650752ca25ed7e93"
   integrity sha512-YT6Klz3LLH6/nNgi0pheJnUmTFW4kVnxGft+v8Itc41IIcjl7y1C8TatmKQBbCSuTSNFXO5pCENnqg6sjwpJhg==
