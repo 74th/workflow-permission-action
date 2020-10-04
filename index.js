@@ -21,7 +21,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(require("@actions/core"));
 const github = __importStar(require("@actions/github"));
-const fs = __importStar(require("fs/promises"));
+const fs_1 = require("fs");
 // import { Octokit } from "@octokit/action";
 function isUserPermittedByUserName(actor) {
     const input = core.getInput("users");
@@ -66,7 +66,7 @@ async function isUserPermittedByListfile(actor) {
         return false;
     }
     try {
-        const file = await fs.readFile(input);
+        const file = await fs_1.promises.readFile(input);
         const members = file.toString().trim().split("\n");
         if (members.findIndex((member) => { return member == actor; }) > -1) {
             return true;
