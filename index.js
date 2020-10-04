@@ -51,25 +51,19 @@ async function isUserPermittedByTeam(actor) {
         catch (e) {
             core.error(`error occurred when fetch team ${github.context.repo.owner}/${team}`);
             core.error(e);
+            return false;
         }
     }
     return false;
 }
 async function main() {
-    try {
-        const actor = github.context.actor;
-        if (isUserPermittedByUserName(actor)) {
-            return;
-        }
-        if (isUserPermittedByTeam(actor)) {
-            return;
-        }
-        core.setFailed(`${actor} is not permitted this workflow`);
+    const actor = github.context.actor;
+    if (isUserPermittedByUserName(actor)) {
         return;
     }
-    catch (e) {
-        core.error(e);
-        core.setFailed("uncaught error occurred");
+    if (isUserPermittedByTeam(actor)) {
+        return;
     }
+    core.setFailed(`${actor} is not permitted this workflow`);
 }
 main();
