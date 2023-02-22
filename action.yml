@@ -14,5 +14,5 @@ branding:
   color: yellow
   icon: alert-triangle
 runs:
-  using: "node12"
+  using: "node16"
   main: "index.js"
